@@ -6,7 +6,7 @@ export default {
       return axios.get('/groups', { params: data })
     },
     save (item) {
-      return item.post('/api/roles/store')
+      return item.post('/api/groups/store')
     },
     delete (id) {
       return axios.delete(`/groups/${id}/delete`)

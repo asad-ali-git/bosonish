@@ -15,8 +15,8 @@
           mb-3
         "
       >
-        <div v-if="selectedRows" class="flex items-center">
-          <span class="mr-2">0 items selected</span>
+        <div v-if="selectedRows.length > 0" class="flex items-center">
+          <span class="mr-2">{{selectedRows.length}} items selected</span>
           <t-button variant="danger" class="flex justify-between mr-2">
             <span class="px-4">Archive</span>
           </t-button>
@@ -177,6 +177,9 @@ export default {
         },
       ],
     };
+  },
+  mounted() {
+      this.getData()
   },
   methods: {
     async getData() {

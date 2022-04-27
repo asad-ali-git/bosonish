@@ -10,7 +10,14 @@
     </template>
     <template slot="body">
       <InputGroup v-model="form.name" tag="t-input" label="Name" field="name" :errors="form.errors" />
-      <InputGroup v-model="form.type" tag="t-input" label="Type" field="type" :errors="form.errors" />
+      <div>
+          <label for="">Type</label>
+          <select class="w-full" v-model="form.type" name="" id="" style="border-color: #d5d6d7; border-radius: 5px">
+              <option :value="null" selected disabled>Please Select Type </option>
+              <option value="Expenses">Expenses</option>
+              <option value="Incomes">Incomes</option>
+          </select>
+      </div>
     </template>
     <template slot="footer">
       <div class="flex justify-end items-end space-x-2 px-4">
@@ -31,7 +38,7 @@ import InputGroup from '~/components/utilities/InputGroup'
 import Api from '~/services/group'
 import Form from 'vform'
 export default {
-  name: 'RoleSidePanel',
+  name: 'GroupSidePanel',
   components: {
     SlideOutPanel,
     InputGroup
