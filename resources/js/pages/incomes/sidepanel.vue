@@ -39,7 +39,7 @@
         >
           <option :value="null">Select a option</option>
           <option :value="item.id" v-for="(item, i) in data" :key="i">
-            {{ item.id + " " + item.name + " " + item.type }}
+            {{item.name}}
           </option>
         </select>
         <has-error :errors="form.errors" field="group_id" />

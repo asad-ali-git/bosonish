@@ -27,6 +27,7 @@
         field="amount"
         :errors="form.errors"
       />
+      <div class="mt-4">
       <label for="">Type</label>
       <select
         name=""
@@ -35,12 +36,15 @@
         class="w-full"
         style="border-color: #d5d6d7; border-radius: 5px"
       >
+      <option :value="null">Select Expense Group</option>
         <option :value="expense.id" v-for="(expense, i) in expenses" :key="i">
-          <h1>{{ expense.name }}</h1>
+          {{ expense.name }}
         </option>
       </select>
       <has-error :errors="form.errors" field="group_id" />
-      <label for="">User</label>
+      </div>
+      <div class="mt-4">
+      <label for="">Paid By</label>
       <select
         name=""
         id=""
@@ -48,11 +52,13 @@
         class="w-full"
         style="border-color: #d5d6d7; border-radius: 5px"
       >
+      <option :value="null">Select Paid By</option>
         <option :value="user.id" v-for="(user, i) in users" :key="i">
-          <h1>{{ user.name }}</h1>
+          {{ user.name }}
         </option>
       </select>
       <has-error :errors="form.errors" field="paid_by" />
+      </div>
     </template>
     <template slot="footer">
       <div class="flex justify-end items-end space-x-2 px-4">
@@ -101,8 +107,8 @@ export default {
   data() {
     return {
       form: new Form(this.record),
-      expenses: null,
-      users: null,
+      expenses: [],
+      users: [],
     };
   },
   mounted() {
@@ -120,7 +126,6 @@ export default {
   methods: {
     async handleSubmit() {
       const { data } = await Api.save(this.form);
-      console.log(data);
       this.show = false;
       this.form.reset();
       this.$notify(
@@ -142,7 +147,6 @@ export default {
     async fetchUsers() {
       const { data } = await Api.getUsers();
       this.users = data;
-      console.log("use", this.users);
     },
   },
 };

@@ -38,9 +38,9 @@
       </div>
     </div>
     <DataTable
-      title="Expenses"
-      search-placeholder="Search Expenses"
       v-if="data"
+      title="All Expenses"
+      search-placeholder="Search Expenses"
       :meta.sync="meta"
 
     >
