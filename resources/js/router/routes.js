@@ -19,6 +19,11 @@ export default [
   { path: '/cards', name: 'cards', component: page('cards.vue') },
   { path: '/buttons', name: 'buttons', component: page('buttons.vue') },
   { path: '/slideout', name: 'slideout', component: page('slideout.vue') },
+
+
+  { path: '/groups', name: 'groups', component: page('groups/index.vue') },
+  { path: '/expenses', name: 'expenses', component: page('expenses/index.vue') },
+  { path: '/incomes', name: 'incomes', component: page('incomes/index.vue') },
   {
     path: '/components',
     component: page('components/index.vue'),
