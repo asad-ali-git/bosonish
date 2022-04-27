@@ -53,9 +53,15 @@ Route::delete('groups/{id}/delete', [GroupController::class, 'destroy']);
 Route::get('groups/all', [GroupController::class, 'all']);
     
 //Expenses Routes
+// Route::post('expenses/store', [ExpenseController::class, 'store']);
+// Route::get('expenses', [ExpenseController::class, 'fetch']);
+// Route::delete('expenses/{id}/delete', [ExpenseController::class, 'destroy']);
+// Route::get('expenses/all', [ExpenseController::class, 'all']);
 Route::post('expenses/store', [ExpenseController::class, 'store']);
 Route::get('expenses', [ExpenseController::class, 'fetch']);
 Route::delete('expenses/{id}/delete', [ExpenseController::class, 'destroy']);
+Route::get('expenses/fetch', [ExpenseController::class, 'fetchExpenses']);
+Route::get('expenses/fetchUsers', [ExpenseController::class, 'getUser']);
 Route::get('expenses/all', [ExpenseController::class, 'all']);
 
     // Income Routes
