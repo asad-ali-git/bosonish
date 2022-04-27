@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\ExpenseController;
+use App\Http\Controllers\GroupController;
 use App\Http\Controllers\Settings\ActivityController;
 use App\Http\Controllers\Settings\NotificationsController;
 use App\Http\Controllers\Settings\PasswordController;
@@ -41,6 +43,18 @@ Route::get('session_t', function () {
 
     return Session::all();
 });
+
+// Groups Routes
+Route::post('groups/store', [GroupController::class, 'store']);
+Route::get('groups', [GroupController::class, 'fetch']);
+Route::delete('groups/{id}/delete', [GroupController::class, 'destroy']);
+Route::get('groups/all', [GroupController::class, 'all']);
+    
+//Expenses Routes
+Route::post('expenses/store', [ExpenseController::class, 'store']);
+Route::get('expenses', [ExpenseController::class, 'fetch']);
+Route::delete('expenses/{id}/delete', [ExpenseController::class, 'destroy']);
+Route::get('expenses/all', [ExpenseController::class, 'all']);
 
 
 
