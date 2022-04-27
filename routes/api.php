@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\Settings\ActivityController;
 use App\Http\Controllers\Settings\NotificationsController;
 use App\Http\Controllers\Settings\PasswordController;
@@ -47,6 +48,7 @@ Route::get('session_t', function () {
 // Groups Routes
 Route::post('groups/store', [GroupController::class, 'store']);
 Route::get('groups', [GroupController::class, 'fetch']);
+Route::get('groups/incomes', [GroupController::class, 'fetchIncomeGroups']);
 Route::delete('groups/{id}/delete', [GroupController::class, 'destroy']);
 Route::get('groups/all', [GroupController::class, 'all']);
     
@@ -55,6 +57,11 @@ Route::post('expenses/store', [ExpenseController::class, 'store']);
 Route::get('expenses', [ExpenseController::class, 'fetch']);
 Route::delete('expenses/{id}/delete', [ExpenseController::class, 'destroy']);
 Route::get('expenses/all', [ExpenseController::class, 'all']);
+
+    // Income Routes
+    Route::post('incomes/store', [IncomeController::class, 'store']);
+    Route::get('incomes', [IncomeController::class, 'fetch']);
+    Route::delete('incomes/{id}/delete', [IncomeController::class, 'destroy']);
 
 
 
@@ -87,7 +94,8 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::get('roles/all', [RolesController::class, 'all']);
         Route::post('roles/assign', [RolesController::class, 'assign']);
 
-        // Roles Routes
+        // Users Routes
+        Route::get('get/users', [SettingsUserController::class, 'getUsers']);
         Route::get('users', [SettingsUserController::class, 'fetch']);
         Route::post('users/store', [SettingsUserController::class, 'store']);
         Route::delete('users/{id}/delete', [SettingsUserController::class, 'destroy']);

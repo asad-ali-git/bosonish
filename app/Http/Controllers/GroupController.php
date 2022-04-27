@@ -12,7 +12,8 @@ use PhpParser\Node\Stmt\TryCatch;
 class GroupController extends Controller
 {
     //
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         if ($request->id) {
             $this->validate($request, [
                 'name' => 'required'
@@ -39,7 +40,8 @@ class GroupController extends Controller
         ]);
     }
 
-    public function fetch(Request $request){
+    public function fetch(Request $request)
+    {
         $searchAbles = ['name', 'type'];
         $length = $request->input('length');
         $orderBy = $request->input('sortBy'); //Index
@@ -60,16 +62,22 @@ class GroupController extends Controller
         return new GeneralResourceCollection($data);
     }
 
+    public function fetchIncomeGroups() {
+        $incomeGroup = Group::where('type', 'Incomes')->get();
+        return $incomeGroup;
+    }
+
     public function all()
     {
         $groups = Group::query()->select(['id as value', 'name as label'])->get();
         return response()->json($groups);
     }
 
-    public function destroy(Request $request){
+    public function destroy(Request $request)
+    {
         try {
             $groups = Group::findOrFail($request->id);
-            $groups->forceDelete(); 
+            $groups->forceDelete();
             $success = 'Group has been deleted.';
             return response()->json([
                 'success' => 1,
