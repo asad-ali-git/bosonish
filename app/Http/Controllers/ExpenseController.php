@@ -27,7 +27,7 @@ class ExpenseController extends Controller
             ]);
         }
         $data = $request->id ? Expense::findOrFail($request->id) : new Expense;
-        $user = auth()->user();
+        
         $data->name = $request->name;
         $data->amount = $request->amount;
         $data->paid_by = $request->paid_by;

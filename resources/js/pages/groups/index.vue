@@ -41,6 +41,7 @@
       v-if="data"
       title="All Groups"
       searchPlaceholder="Search Groups"
+      :meta.sync="meta"
       @refresh="getData()"
     >
       <template slot="table">
