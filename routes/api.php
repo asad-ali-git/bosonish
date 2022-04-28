@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\UserController;
 use App\Http\Controllers\Auth\VerificationController;
+use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\IncomeController;
@@ -65,7 +66,8 @@ Route::get('expenses/all', [ExpenseController::class, 'all']);
     Route::get('incomes', [IncomeController::class, 'fetch']);
     Route::delete('incomes/{id}/delete', [IncomeController::class, 'destroy']);
 
-
+    //Mail
+    Route::get('sendEmail', [EmailController::class, 'sendEmails']);
 
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [LoginController::class, 'logout']);

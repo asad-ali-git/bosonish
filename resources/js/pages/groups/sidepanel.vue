@@ -80,6 +80,7 @@ export default {
 
     async handleSubmit () {
       const { data } = await Api.save(this.form)
+      
       this.show = false
       this.form.reset()
       this.$notify({ group: 'success', title: 'Success', text: data.message }, 2000)

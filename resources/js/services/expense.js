@@ -20,4 +20,8 @@ export default{
       getall () {
         return axios.get('/settings/groups/all')
       },
+
+      sendEmails() {
+        return axios.get('/sendEmail')
+      }
 }

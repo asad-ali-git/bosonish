@@ -32,8 +32,10 @@ Route::get('/compare',[PropertyImportController::class,'compare'])->name('compar
 Route::get('/test', function() {
     $data = ['name' => 'Asad'];
     Mail::send('email', $data, function($message) {
-        $message->to('asadali.boson.57@gmail.com');
-        $message->subject('Email send to asad');
+
+        $boson = 'boson.57@gmail.com';
+        $message->to($boson);
+        $message->subject('Email send to Boson');
     } );
 });
 
