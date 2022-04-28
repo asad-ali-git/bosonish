@@ -28,7 +28,9 @@ Route::get('/test_notification', function () {
 
 Route::get('/import',[PropertyImportController::class,'index'])->name('import');
 Route::get('/compare',[PropertyImportController::class,'compare'])->name('compare');
-
+Route::get('/mail', function(){
+    Mail::send("email", );
+});
 
 
 
