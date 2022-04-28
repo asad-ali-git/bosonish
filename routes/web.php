@@ -3,6 +3,7 @@
 use App\Http\Controllers\PropertyImportController;
 use App\Models\User;
 use App\Notifications\TwoFactorAuthNotification;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
 
@@ -27,5 +28,10 @@ Route::get('/test_notification', function () {
 
 Route::get('/import',[PropertyImportController::class,'index'])->name('import');
 Route::get('/compare',[PropertyImportController::class,'compare'])->name('compare');
+Route::get('/mail', function(){
+    Mail::send("email", "");
+});
+
+
 
 

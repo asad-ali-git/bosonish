@@ -43,9 +43,9 @@
           v-model="currentPage"
           :total-items="meta.total"
           :per-page="perPage"
-          :limit="meta.length"
+          :limit="limit"
         />
-      </div>
+       </div>
     </div>
   </div>
 </template>
@@ -87,7 +87,13 @@ export default {
       }
     }
   },
+  data(){
+      return{
+      limit : 10
+      }
+    },
   computed: {
+    
     currentPage: {
       get () {
         return this.meta.page
