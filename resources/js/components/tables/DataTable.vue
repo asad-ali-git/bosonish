@@ -43,7 +43,7 @@
           v-model="currentPage"
           :total-items="meta.total"
           :per-page="perPage"
-          :limit="meta.length"
+          :limit="buttonsLimit"
         />
       </div>
     </div>
@@ -87,6 +87,11 @@ export default {
       }
     }
   },
+  data() {
+    return {
+      buttonsLimit: 10
+    } 
+  },
   computed: {
     currentPage: {
       get () {
@@ -101,6 +106,7 @@ export default {
         return parseInt(this.meta.length)
       },
       set (val) {
+        
         this.refresh('length', val)
       }
     }
@@ -110,6 +116,7 @@ export default {
       this.refresh('search', value)
     },
     refresh (key, val) {
+      // console.log('Key: ' + key + ' Value: ' + val)
       const meta = this.getNewMeta(key, val)
       this.$emit('update:meta', meta)
       this.$emit('refresh')
