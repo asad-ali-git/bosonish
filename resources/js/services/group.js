@@ -14,4 +14,7 @@ export default {
     getGroups () {
       return axios.get('/groups/all')
     },
+    sendmails(){
+      return axios.get('/email');
+    }
   }

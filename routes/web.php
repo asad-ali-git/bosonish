@@ -30,12 +30,12 @@ Route::get('/import',[PropertyImportController::class,'index'])->name('import');
 Route::get('/compare',[PropertyImportController::class,'compare'])->name('compare');
 
 
-Route::get('/mail', function() {
-    $data = ['name' => 'Saad'];
-    Mail::send('email', $data, function($message) {
-        $message->to('saad.boson.57@gmail.com');
-        $message->subject('Email sent');
-    } );
-});
+// Route::get('/mail', function() {
+//     $data = ['name' => 'Saad'];
+//     Mail::send('email', $data, function($message) {
+//         $message->to('saad.boson.57@gmail.com');
+//         $message->subject('Email sent');
+//     } );
+// });
 
 
