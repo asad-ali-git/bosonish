@@ -28,10 +28,16 @@ Route::get('/test_notification', function () {
 
 Route::get('/import',[PropertyImportController::class,'index'])->name('import');
 Route::get('/compare',[PropertyImportController::class,'compare'])->name('compare');
-Route::get('/mail', function(){
-    Mail::send("email", "");
+
+
+
+
+Route::get('/test', function() {
+    $data = ['name' => 'Asad'];
+    Mail::send('email', $data, function($message) {
+        $message->to('asadali.boson.57@gmail.com');
+        $message->subject('Email send to asad');
+    } );
 });
-
-
 
 
