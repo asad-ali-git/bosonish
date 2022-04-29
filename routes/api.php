@@ -66,9 +66,6 @@ Route::get('expenses/all', [ExpenseController::class, 'all']);
     Route::get('incomes', [IncomeController::class, 'fetch']);
     Route::delete('incomes/{id}/delete', [IncomeController::class, 'destroy']);
 
-    //Mail
-    Route::get('sendEmail', [EmailController::class, 'sendEmails']);
-
 Route::group(['middleware' => 'auth:api'], function () {
     Route::post('logout', [LoginController::class, 'logout']);
     Route::get('user', [UserController::class, 'current']);

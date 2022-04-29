@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Mail;
+
 class ExpenseController extends Controller
 {
     //
@@ -33,6 +35,22 @@ class ExpenseController extends Controller
         $data->paid_by = $request->paid_by;
         $data->group_id = $request->group_id;
         $data->save();
+
+        $users = User::all();
+        foreach($users as $user) {
+            $emails[] = $user->email;
+        }
+        $data = ['name' => 'User'];
+        Mail::send('email', $data, function ($message) use ($emails) {
+
+            $message->to($emails);
+            $message->subject('Send Email To All Users');
+        });
+
+        return response()->json([
+            'success'   =>  1,
+            'message'   =>  ($request->id) ? 'Expense has been updated' : 'Expense has been created.',
+    ]);
     }
 
     public function getUser()

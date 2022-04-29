@@ -14,13 +14,11 @@ class EmailController extends Controller
         foreach($users as $user) {
             $emails[] = $user->email;
         }
-        // dd($emails);
-        $data = ['name' => 'Saad'];
+        $data = ['name' => 'User'];
         Mail::send('email', $data, function ($message) use ($emails) {
 
-            // $boson = 'Saad.57@gmail.com';
             $message->to($emails);
-            $message->subject('Email send to Saad');
+            $message->subject('Send Email To All Users');
         });
     }
 }
