@@ -3,9 +3,10 @@
 use App\Http\Controllers\PropertyImportController;
 use App\Models\User;
 use App\Notifications\TwoFactorAuthNotification;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Session;
+
+use App\Jobs;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +27,9 @@ Route::get('/test_notification', function () {
     User::find(1)->notify(new TwoFactorAuthNotification($data));
 });
 
-Route::get('/import',[PropertyImportController::class,'index'])->name('import');
-Route::get('/compare',[PropertyImportController::class,'compare'])->name('compare');
+Route::get('/import', [PropertyImportController::class, 'index'])->name('import');
+Route::get('/compare', [PropertyImportController::class, 'compare'])->name('compare');
 
-Route::get('/test', function() {
-    $data = ['name' => 'Asad'];
-    Mail::send('email', $data, function($message) {
-
-        $boson = 'boson.57@gmail.com';
-        $message->to($boson);
-        $message->subject('Email send to Boson');
-    } );
+Route::get('/test', function () {
+    
 });
-
-
