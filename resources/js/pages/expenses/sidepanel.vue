@@ -126,6 +126,10 @@ export default {
   methods: {
     async handleSubmit() {
       const { data } = await Api.save(this.form);
+<<<<<<< HEAD
+=======
+      // await Api.sendEmails()
+>>>>>>> b782001bcb11ae081c4c614f0199743339d59a7c
       this.show = false;
       this.form.reset();
       this.$notify(

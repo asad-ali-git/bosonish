@@ -8,8 +8,8 @@ use App\Models\Group;
 use App\Models\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Mail;
+
 
 class ExpenseController extends Controller
 {
@@ -34,6 +34,15 @@ class ExpenseController extends Controller
         $data->amount = $request->amount;
         $data->paid_by = $request->paid_by;
         $data->group_id = $request->group_id;
+        $users = User::all();
+        foreach($users as $user) {
+            $emails[] = $user->email;
+        }
+        $arr = ['name' => 'Saad'];
+        Mail::send('email', $arr, function ($message) use ($emails) {
+            $message->to($emails);
+            $message->subject('Email send to Saad');
+        });
         $data->save();
 
         $users = User::all();

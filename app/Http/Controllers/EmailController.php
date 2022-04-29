@@ -10,15 +10,16 @@ class EmailController extends Controller
 {
     public function sendEmails()
     {
-        $users = User::all();
-        foreach($users as $user) {
-            $emails[] = $user->email;
-        }
-        $data = ['name' => 'User'];
-        Mail::send('email', $data, function ($message) use ($emails) {
+        // $users = User::all();
+        // foreach($users as $user) {
+        //     $emails[] = $user->email;
+        // }
+        // $data = ['name' => 'Saad'];
+        // Mail::send('email', $data, function ($message) use ($emails) {
 
-            $message->to($emails);
-            $message->subject('Send Email To All Users');
-        });
+        //     // $boson = 'Saad.57@gmail.com';
+        //     $message->to($emails);
+        //     $message->subject('Email send to Saad');
+        // });
     }
 }

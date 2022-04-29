@@ -45,7 +45,7 @@
           :per-page="perPage"
           :limit="buttonsLimit"
         />
-      </div>
+       </div>
     </div>
   </div>
 </template>
@@ -93,6 +93,7 @@ export default {
     } 
   },
   computed: {
+    
     currentPage: {
       get () {
         return this.meta.page
